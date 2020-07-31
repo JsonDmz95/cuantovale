@@ -1,10 +1,11 @@
-import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import React, { Fragment } from "react";
+import Header from "./Components/Header";
 
 function App() {
   return (
-    <h1>CuantoVale</h1>
+    <Fragment>
+      <Header />
+    </Fragment>
   );
 }
 

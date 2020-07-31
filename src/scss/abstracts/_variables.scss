@@ -21,7 +21,7 @@ $grey: #ccc;
 $wrongurl-color: #eee;
 
 // Company color pallete
-$primary-color: #2155BF;
+$primary-color: rgb(33, 85, 191);
 $secondary-color: $black;
 $third-color: $secondary-color;
 
@@ -30,7 +30,7 @@ $btn-color: $primary-color;
 $hover-color: $third-color;
 $internals-links: $hover-color;
 
-$body-color: #F3F6FF;
+$body-color: #f3f6ff;
 
 
 $base-url: '/assets/' !default;
