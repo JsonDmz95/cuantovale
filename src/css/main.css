@@ -139,53 +139,87 @@ header.side .collapse-btn.collapsed img {
   transform: rotate(-90deg);
 }
 
+@media (min-width: 768px) {
+  header.side {
+    padding: 15px 0px 25px;
+    border-radius: 0px 0px 40px 40px;
+    box-shadow: 0px 0px 60px rgba(193, 202, 229, 0.7);
+    position: relative;
+  }
+  header.side .col-12 {
+    position: relative;
+  }
+  header.side .logo-container .logo-link {
+    display: inline-block;
+    max-width: 175px;
+  }
+  header.side .logo-container .logo-link img {
+    width: 100%;
+  }
+  header.side .collapse-btn {
+    position: absolute;
+    top: auto;
+    bottom: -25px;
+    right: 30px;
+    left: auto;
+    border: none;
+    padding: 15px 30px;
+    background: #2155bf;
+    border-radius: 20px 20px 20px 0px;
+    box-shadow: -4px 4px 15px rgba(33, 85, 191, 0.2);
+  }
+  header.side .collapse-btn img {
+    transform: rotate(90deg);
+    transform-origin: center center;
+    transition: all ease 0.3s;
+  }
+  header.side .collapse-btn:hover, header.side .collapse-btn:active, header.side .collapse-btn:focus {
+    outline: none;
+  }
+  header.side .collapse-btn.collapsed img {
+    transform: rotate(-90deg);
+  }
+}
+
 .primary-button, .btn-default, .btn-general {
   background-color: #2155bf;
   color: #fff;
-  padding: 8.5px 15px;
+  padding: 16px;
   border: none;
-  border-radius: 0px;
-  font-size: 18px;
-  line-height: 1.5;
+  border-radius: 30.5px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
   text-decoration: none;
   text-align: center;
   outline: none;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   white-space: -pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
+  box-shadow: 0px 0px 40px rgba(33, 85, 191, 0.3);
 }
 
 .primary-button:hover, .primary-button:active, .primary-button:focus, .btn-default:hover, .btn-default:active, .btn-default:focus, .btn-general:hover, .btn-general:active, .btn-general:focus {
   color: #fff;
-  background-color: #1c48a2;
+  background-color: #000;
   text-decoration: none;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
 }
 
-.primary-button.active.focus, .primary-button.active:focus, .primary-button.active:hover, .primary-button:active.focus, .primary-button:active:focus, .primary-button:active:hover, .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .btn-general.active.focus, .btn-general.active:focus, .btn-general.active:hover, .btn-general:active.focus, .btn-general:active:focus, .btn-general:active:hover {
-  background-color: #2155bf;
-  color: #fff;
-  padding: 8.5px 15px;
-  border: none;
-  border-radius: 0px;
+.primary-button.submit-btn, .btn-default.submit-btn, .btn-general.submit-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   font-size: 18px;
-  line-height: 1.5;
-  text-decoration: none;
-  text-align: center;
-  outline: none;
-  transition: all 0.3s ease;
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
+  margin-top: 60px;
 }
 
-.primary-button.active.focus:hover, .primary-button.active.focus:active, .primary-button.active.focus:focus, .primary-button.active:focus:hover, .primary-button.active:focus:active, .primary-button.active:focus:focus, .primary-button.active:hover:hover, .primary-button.active:hover:active, .primary-button.active:hover:focus, .primary-button:active.focus:hover, .primary-button:active.focus:active, .primary-button:active.focus:focus, .primary-button:active:focus:hover, .primary-button:active:focus:active, .primary-button:active:focus:focus, .primary-button:active:hover:hover, .primary-button:active:hover:active, .primary-button:active:hover:focus, .btn-default.active.focus:hover, .btn-default.active.focus:active, .btn-default.active.focus:focus, .btn-default.active:focus:hover, .btn-default.active:focus:active, .btn-default.active:focus:focus, .btn-default.active:hover:hover, .btn-default.active:hover:active, .btn-default.active:hover:focus, .btn-default:active.focus:hover, .btn-default:active.focus:active, .btn-default:active.focus:focus, .btn-default:active:focus:hover, .btn-default:active:focus:active, .btn-default:active:focus:focus, .btn-default:active:hover:hover, .btn-default:active:hover:active, .btn-default:active:hover:focus, .btn-general.active.focus:hover, .btn-general.active.focus:active, .btn-general.active.focus:focus, .btn-general.active:focus:hover, .btn-general.active:focus:active, .btn-general.active:focus:focus, .btn-general.active:hover:hover, .btn-general.active:hover:active, .btn-general.active:hover:focus, .btn-general:active.focus:hover, .btn-general:active.focus:active, .btn-general:active.focus:focus, .btn-general:active:focus:hover, .btn-general:active:focus:active, .btn-general:active:focus:focus, .btn-general:active:hover:hover, .btn-general:active:hover:active, .btn-general:active:hover:focus {
-  color: #fff;
-  background-color: #1c48a2;
-  text-decoration: none;
+.primary-button.submit-btn img, .btn-default.submit-btn img, .btn-general.submit-btn img {
+  margin-left: 0;
 }
 /*# sourceMappingURL=main.css.map */
