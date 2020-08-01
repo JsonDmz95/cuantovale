@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
 import Axios from "axios";
 
-import { myBlue, myBody, myInputShadow } from "./colores";
+import { Formulario, FormGroup } from "./StyledComponents";
 
 import icon_info_propiedad from "../img/icon-info-propiedad.svg";
 import icon_tipo from "../img/icon-tipo.svg";
@@ -13,103 +12,51 @@ import icon_dormitorios from "../img/icon-dormitorios.svg";
 import icon_banos from "../img/icon-banos.svg";
 import icon_estimar from "../img/icon-estimar.svg";
 
-// Styled Components
-const Formulario = styled.form`
-  padding: 50px 0px;
-
-  .section-title {
-    font-size: 18px;
-    margin-bottom: 30px;
-    strong {
-      font-weight: 500;
-    }
-  }
-
-  .left-icon {
-    margin-right: 15px;
-  }
-
-  .divider {
-    height: 2px;
-    width: 25px;
-    background: rgba(${myBlue}, 0.3);
-    margin-bottom: 15px;
-  }
-
-  @media (min-width: 768px) {
-    padding: 50px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    .section-title {
-      width: 100%;
-    }
-
-    .divider-container {
-      flex-basis: 100%;
-    }
-  }
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.75);
-  margin-bottom: 30px;
-
-  label {
-    margin-bottom: 15px;
-
-    &.required::after {
-      content: "*";
-      color: rgb(${myBlue});
-    }
-  }
-
-  select,
-  input {
-    appearance: none;
-    padding: 13px 25px;
-    background-color: rgb(${myBody});
-    border: none;
-    border-radius: 21px;
-    outline: none;
-    box-shadow: inset 10px 10px 15px rgba(${myInputShadow}, 0.5);
-
-    ::placeholder {
-      color: rgba(0, 0, 0, 0.4);
-    }
-  }
-
-  @media (min-width: 768px) {
-    width: 45%;
-  }
-`;
-
-// END OF Styled Components
-
-const Form = () => {
+const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
   // States
   const [listaComunas, saveListaComunas] = useState([]);
   // End OF States
 
+  //Destructuring
+  const {
+    tipo,
+    comuna,
+    superficie_util,
+    superficie_total,
+    dormitorios,
+    banos
+  } = propiedad;
+  //END OF Destructuring
+
   //Consulta a API de comunas
   useEffect(() => {
     const consultarAPI = async () => {
-      const url = `https://apis.digital.gob.cl/dpa/provincias/131/comunas`;
+      const url = 'https://real-estate-api-ndtm7xbgda-uc.a.run.app/features_info';
 
       const resultado = await Axios.get(url);
-      saveListaComunas(resultado.data);
+      saveListaComunas(resultado.data.categorical_features[0].allowed_values);
     };
 
     consultarAPI();
-  }, []);
+  }, [listaComunas]);
+
+  //obtener valores del formulario
+  const handleChange = (e) => {
+    updatePropiedad({
+      ...propiedad,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  //Envío de formulario
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    updateConsulta(true);
+  };
 
   return (
-    <Formulario>
+    <Formulario onSubmit={handleSubmit}>
       <p className="section-title">
         <strong>
           <img
@@ -121,14 +68,22 @@ const Form = () => {
         </strong>
       </p>
 
-      <div className="divider-container"><div className="divider"></div></div>
+      <div className="divider-container">
+        <div className="divider"></div>
+      </div>
 
       <FormGroup>
         <label className="required">
           <img src={icon_tipo} alt="Tipo de propiedad" className="left-icon" />
           Tipo de propiedad
         </label>
-        <select name="tipo" id="tipo">
+        <select
+          name="tipo"
+          id="tipo"
+          onChange={handleChange}
+          value={tipo || ""}
+          required
+        >
           <option value="">Seleccionar ▾</option>
           <option value="Casa">Casa</option>
           <option value="Departamento">Departamento</option>
@@ -144,11 +99,17 @@ const Form = () => {
           />
           Ubicación (Comuna)
         </label>
-        <select name="comuna" id="comuna">
+        <select
+          name="comuna"
+          id="comuna"
+          onChange={handleChange}
+          value={comuna || ""}
+          required
+        >
           <option value="">Seleccionar ▾</option>
           {listaComunas.map((comuna) => (
-            <option key={comuna.codigo} value={comuna.nombre}>
-              {comuna.nombre}
+            <option key={comuna} value={comuna}>
+              {comuna}
             </option>
           ))}
         </select>
@@ -168,6 +129,9 @@ const Form = () => {
           name="superficie_util"
           id="superficie_util"
           placeholder="Ej. 110.00"
+          onChange={handleChange}
+          value={superficie_util || ""}
+          required
         />
       </FormGroup>
 
@@ -185,6 +149,8 @@ const Form = () => {
           name="superficie_total"
           id="superficie_total"
           placeholder="Ej. 136.15"
+          onChange={handleChange}
+          value={superficie_total || ""}
         />
       </FormGroup>
 
@@ -202,6 +168,8 @@ const Form = () => {
           name="dormitorios"
           id="dormitorios"
           placeholder="Ej. 4"
+          onChange={handleChange}
+          value={dormitorios || ""}
         />
       </FormGroup>
 
@@ -210,7 +178,14 @@ const Form = () => {
           <img src={icon_banos} alt="Numero de banos" className="left-icon" />
           Numero de banos
         </label>
-        <input type="number" name="banos" id="banos" placeholder="Ej. 2" />
+        <input
+          type="number"
+          name="banos"
+          id="banos"
+          placeholder="Ej. 2"
+          onChange={handleChange}
+          value={banos || ""}
+        />
       </FormGroup>
 
       <button type="submit" className="primary-button submit-btn">

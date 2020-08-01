@@ -1,13 +1,44 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 
-import Form from "./Form"
+import Form from "./Form";
 
 import logo from "../img/logo.svg";
 import angle from "../img/collapse-angle.svg";
 
 const Header = () => {
+
+  // States
+  const [propiedad, updatePropiedad] = useState({});
+  const [consulta, updateConsulta] = useState(false);
+  // END OF States
+
+    //Destructuring
+    const {
+      tipo,
+      comuna,
+      superficie_util,
+      superficie_total,
+      dormitorios,
+      banos
+    } = propiedad;
+    //END OF Destructuring
+
+    useEffect(() => {
+      const readAPI = async () => {
+        if(consulta){
+          const apiUrl = "https://real-estate-api-ndtm7xbgda-uc.a.run.app/predict";
+
+          const respuesta = await axios.post(apiUrl, propiedad).catch();
+
+          console.log(respuesta);
+        }
+      };
+      readAPI();
+    }, [consulta]);
+
   return (
-    <header className="side">
+    <header className="side collapse show" id="header">
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
@@ -17,7 +48,7 @@ const Header = () => {
               </a>
             </div>
             <button
-              className="collapse-btn"
+              className="collapse-btn d-md-none"
               aria-label="Form"
               type="button"
               data-toggle="collapse"
@@ -30,7 +61,11 @@ const Header = () => {
             </button>
 
             <div className="form-container collapse show" id="form-content">
-              <Form />
+              <Form 
+                propiedad={propiedad}
+                updatePropiedad={updatePropiedad}
+                updateConsulta={updateConsulta}
+              />
             </div>
           </div>
         </div>

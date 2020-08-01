@@ -30,6 +30,7 @@ header.side{
     background: $primary-color;
     border-radius: 20px 20px 20px 0px;
     box-shadow: -4px 4px 15px rgba(#2155bf, 0.2);
+    transition: background ease 0.5s, box-shadow ease 0.5s;
 
     img{
       transform: rotate(90deg);
@@ -39,6 +40,7 @@ header.side{
 
     @include on-event{
       outline: none;
+      box-shadow: 0px 0px 40px rgba($btn-color, 0), inset 0px 0px 30px rgba($black, 0.3);
     }
 
     &.collapsed{
@@ -51,55 +53,72 @@ header.side{
 
 @media (min-width: 768px){
   header.side{
-    padding: 15px 0px 25px;
-    border-radius: 0px 0px 40px 40px;
-    box-shadow: 0px 0px 60px rgba(#c1cae5, 0.7s);
-    position: relative;
-
-    // width: 28.64%;
-  
-    .col-12{
-      position: relative;
-    }
-  
     .logo-container{
+      padding-left: 20px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  header.side{
+    width: 40%;
+    max-width: 550px;
+    min-height: 100vh;
+    padding-top: 30px;
+    border-radius: 0px 40px 40px;
+    transition: all ease 0.5s;
+    transform: translateX(0);
+
+    .logo-container{
+      padding-left: 25px;
       .logo-link{
-        display: inline-block;
-        max-width: 175px;
-        img{
-          width: 100%;
-        }
+        max-width: 220px;
       }
     }
-    
+
     .collapse-btn{
-      position: absolute;
-      top: auto;
-      bottom: -25px;
-      right: 30px;
-      left: auto;
-      border: none;
-      padding: 15px 30px;
-      background: $primary-color;
-      border-radius: 20px 20px 20px 0px;
-      box-shadow: -4px 4px 15px rgba(#2155bf, 0.2);
-  
+      bottom: auto;
+      top: 30px;
+      padding: 25px 21px;
+      right: 0;
+      border-radius: 20px 20px 0px 20px ;
       img{
-        transform: rotate(90deg);
-        transform-origin: center center;
-        transition: all ease 0.3s;
+        transform: rotate(0deg);
       }
-  
-      @include on-event{
-        outline: none;
-      }
-  
+
       &.collapsed{
         img{
-          transform: rotate(-90deg);
+          transform: rotate(180deg);
         }
+      }
+    }
+
+    &:not(.show){
+      display: block !important;
+      transform: translateX(calc(-100% + 60px));
+    }
+  }
+
+  .form-container{
+    display: block !important;
+  }
+}
+
+@media (min-width: 1200px){
+  header.side{
+    padding-top: 40px;
+    .logo-container{
+      .logo-link{
+        max-width: none;
       }
     }
   }
-  
+}
+
+@media (min-width: 1200px){
+  header.side{
+    .logo-container{
+      padding-left: 45px;
+    }
+  }
 }
