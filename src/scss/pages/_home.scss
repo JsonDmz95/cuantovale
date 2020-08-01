@@ -1,0 +1,41 @@
+#root{
+  
+  header.side{
+    position: relative;
+    z-index: 2;
+  }
+  .display{
+    position: relative;
+    padding: 50px 0px 30px;
+  }
+}
+
+@media (min-width: 992px){
+  #root{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    .display{
+      max-width: 60%;
+      padding-top: 0px;
+      padding-left: 45px;
+      padding-right: 45px;
+      flex-grow: 1;
+    }
+  }
+}
+
+@media (min-width: 1400px){
+  #root .display{
+    max-width: calc(100% - 500px);
+  }
+}
+
+@media (min-width: 1500px){
+  #root .display{
+    padding-left: 100px;
+      padding-right: 100px;
+  }
+}

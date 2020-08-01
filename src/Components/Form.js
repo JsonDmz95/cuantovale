@@ -15,6 +15,8 @@ import icon_estimar from "../img/icon-estimar.svg";
 const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
   // States
   const [listaComunas, saveListaComunas] = useState([]);
+  const [limites, saveLimites] = useState([]);
+  const [printed, updatePrinted] = useState(false);
   // End OF States
 
   //Destructuring
@@ -35,10 +37,14 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
 
       const resultado = await Axios.get(url);
       saveListaComunas(resultado.data.categorical_features[0].allowed_values);
+      saveLimites(resultado.data.numerical_features)
+      updatePrinted(true);
     };
 
-    consultarAPI();
-  }, [listaComunas]);
+    if(!printed){
+      consultarAPI();
+    }
+  }, [listaComunas, printed]);
 
   //obtener valores del formulario
   const handleChange = (e) => {
@@ -140,6 +146,9 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
           onChange={handleChange}
           value={superficie_util || ""}
           required
+          // min={limites[0].min === undefined ? null : limites[0].min}
+          min={printed? limites[0].min : null}
+          max={printed? limites[0].max : null}
         />
       </FormGroup>
 
@@ -159,6 +168,9 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
           placeholder="Ej. 136.15"
           onChange={handleChange}
           value={superficie_total || ""}
+          required
+          min={printed? limites[1].min : null}
+          max={printed? limites[1].max : null}
         />
       </FormGroup>
 
@@ -178,6 +190,9 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
           placeholder="Ej. 4"
           onChange={handleChange}
           value={dormitorios || ""}
+          required
+          min={printed? limites[2].min : null}
+          max={printed? limites[2].max : null}
         />
       </FormGroup>
 
@@ -193,6 +208,9 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
           placeholder="Ej. 2"
           onChange={handleChange}
           value={banos || ""}
+          required
+          min={printed? limites[3].min : null}
+          max={printed? limites[3].max : null}
         />
       </FormGroup>
 

@@ -6,7 +6,7 @@ import Form from "./Form";
 import logo from "../img/logo.svg";
 import angle from "../img/collapse-angle.svg";
 
-const Header = () => {
+const Header = ({ updateProduccion }) => {
   // States
   const [propiedad, updatePropiedad] = useState({
     latitud: 0,
@@ -50,20 +50,29 @@ const Header = () => {
         const api = await axios.create({
           baseURL: "https://real-estate-api-ndtm7xbgda-uc.a.run.app/predict/",
           crossDomain: true,
-          responseType: 'json',
+          responseType: "json",
           headers: {
-            'accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
+            accept: "application/json",
+            "Content-Type": "application/json",
+          },
         });
 
         const respuesta = await api.post(apiBase, JSON.parse(jsoned));
-
-        console.log(respuesta);
+        updateProduccion(respuesta.data);
+        updateConsulta(false);
       }
     };
     readAPI();
-  }, [consulta]);
+  }, [
+    consulta,
+    tipo,
+    comuna,
+    superficie_util,
+    superficie_total,
+    dormitorios,
+    banos,
+    updateProduccion,
+  ]);
 
   return (
     <header className="side collapse show" id="header">

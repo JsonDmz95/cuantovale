@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { myBlue, myBody, myInputShadow } from "./colores";
+import { myBlue, myBody, myInputShadow, cardShadoe } from "./colores";
 
 // Styled Components
 export const Formulario = styled.form`
@@ -118,4 +118,60 @@ export const FormGroup = styled.div`
 
 `;
 
+export const ImageBg = styled.img`
+  opacity: 0.03;
+`;
+
+export const MainTitle = styled.h2`
+    font-size: 40px;
+    color: #000;
+    margin-bottom: 30px;
+`;
+
+export const ResultCard = styled.div`
+  background: #fff;
+  border-radius: 40px;
+  box-shadow: -10px 4px 60px rgba(${cardShadoe}, 0.5); 
+  padding: 30px;
+
+  .resultado-container{
+    .division-title{
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 30px;
+    }
+
+    .item-info{
+      margin-bottom: 30px;
+      text-transform: capitalize;
+    }
+
+    .resultado{
+      padding-top: 30px;
+
+      .precio{
+        font-weight: 800;
+        font-size: 42px;
+        text-shadow: 0px 10px 15px rgba(${myBlue}, 0.2)
+      }
+    }
+  }
+
+  @media (min-width: 1400px){
+    padding: 50px;
+    .resultado-container{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+
+      .resultado{
+        padding-top: 0px;
+        width: 50%;
+        padding-left: 15px;
+      }
+    }
+  }
+`;
 // END OF Styled Components
