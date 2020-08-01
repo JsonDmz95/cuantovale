@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Form from "./Form";
@@ -7,35 +7,63 @@ import logo from "../img/logo.svg";
 import angle from "../img/collapse-angle.svg";
 
 const Header = () => {
-
   // States
-  const [propiedad, updatePropiedad] = useState({});
+  const [propiedad, updatePropiedad] = useState({
+    latitud: 0,
+    longitud: 0,
+  });
   const [consulta, updateConsulta] = useState(false);
   // END OF States
 
-    //Destructuring
-    const {
-      tipo,
-      comuna,
-      superficie_util,
-      superficie_total,
-      dormitorios,
-      banos
-    } = propiedad;
-    //END OF Destructuring
+  //Destructuring
+  const {
+    tipo,
+    comuna,
+    superficie_util,
+    superficie_total,
+    dormitorios,
+    banos,
+  } = propiedad;
+  //END OF Destructuring
 
-    useEffect(() => {
-      const readAPI = async () => {
-        if(consulta){
-          const apiUrl = "https://real-estate-api-ndtm7xbgda-uc.a.run.app/predict";
+  useEffect(() => {
+    const readAPI = async () => {
+      if (consulta) {
+        const apiBase =
+          "https://real-estate-api-ndtm7xbgda-uc.a.run.app/predict";
 
-          const respuesta = await axios.post(apiUrl, propiedad).catch();
+        const jsoned = `
+          {
+            "propiedad": {
+              "tipo": "${tipo}",
+              "comuna": "${comuna}",
+              "superficie_util": ${superficie_util},
+              "superficie_total": ${superficie_total},
+              "dormitorios": ${dormitorios},
+              "banos": ${banos},
+              "latitud": 0,
+              "longitud": 0
+            }
+          }
+        `;
 
-          console.log(respuesta);
-        }
-      };
-      readAPI();
-    }, [consulta]);
+        const api = await axios.create({
+          baseURL: "https://real-estate-api-ndtm7xbgda-uc.a.run.app/predict/",
+          crossDomain: true,
+          responseType: 'json',
+          headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        });
+
+        const respuesta = await api.post(apiBase, JSON.parse(jsoned));
+
+        console.log(respuesta);
+      }
+    };
+    readAPI();
+  }, [consulta]);
 
   return (
     <header className="side collapse show" id="header">
@@ -61,7 +89,7 @@ const Header = () => {
             </button>
 
             <div className="form-container collapse show" id="form-content">
-              <Form 
+              <Form
                 propiedad={propiedad}
                 updatePropiedad={updatePropiedad}
                 updateConsulta={updateConsulta}

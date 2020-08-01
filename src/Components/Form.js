@@ -42,10 +42,18 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
 
   //obtener valores del formulario
   const handleChange = (e) => {
-    updatePropiedad({
-      ...propiedad,
-      [e.target.name]: e.target.value
-    });
+    
+    if(e.target.type === "number"){
+      updatePropiedad({
+        ...propiedad,
+        [e.target.name]: parseFloat(e.target.value)
+      });
+    } else{
+      updatePropiedad({
+        ...propiedad,
+        [e.target.name]: e.target.value
+      });
+    }
   };
 
   //Envío de formulario
@@ -85,8 +93,8 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
           required
         >
           <option value="">Seleccionar ▾</option>
-          <option value="Casa">Casa</option>
-          <option value="Departamento">Departamento</option>
+          <option value="casa">Casa</option>
+          <option value="departamento">Departamento</option>
         </select>
       </FormGroup>
 
