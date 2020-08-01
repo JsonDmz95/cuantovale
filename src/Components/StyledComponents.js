@@ -9,8 +9,21 @@ export const Formulario = styled.form`
   .section-title {
     font-size: 18px;
     margin-bottom: 30px;
-    strong {
+    strong, b {
       font-weight: 500;
+    }
+
+    label{
+      margin-left: 10px;
+      sup{
+        color: rgb(${myBlue});
+      }
+    }
+  }
+
+  #specific{
+    &, &+label{
+      cursor: pointer;
     }
   }
 
@@ -47,7 +60,7 @@ export const Formulario = styled.form`
   }
 
   @media (min-width: 1200px){
-    padding-top: 70px
+    /* padding-top: 70px */
   }
 
   @media (min-width: 1400px){
@@ -145,7 +158,7 @@ export const ResultCard = styled.div`
 
     .item-info{
       margin-bottom: 30px;
-      text-transform: capitalize;
+      /* text-transform: capitalize; */
     }
 
     .resultado{
@@ -154,7 +167,12 @@ export const ResultCard = styled.div`
       .precio{
         font-weight: 800;
         font-size: 42px;
-        text-shadow: 0px 10px 15px rgba(${myBlue}, 0.2)
+        text-shadow: 0px 10px 15px rgba(${myBlue}, 0.2);
+        padding-top: 20px;
+      }
+
+      .btn-container{
+        padding-top: 50px;
       }
     }
   }

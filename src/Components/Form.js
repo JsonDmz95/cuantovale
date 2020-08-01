@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 import { Formulario, FormGroup } from "./StyledComponents";
+import LocalizationForm from "./LocalizationForm";
 
 import icon_info_propiedad from "../img/icon-info-propiedad.svg";
 import icon_tipo from "../img/icon-tipo.svg";
@@ -12,11 +13,12 @@ import icon_dormitorios from "../img/icon-dormitorios.svg";
 import icon_banos from "../img/icon-banos.svg";
 import icon_estimar from "../img/icon-estimar.svg";
 
-const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
+const Form = ({ propiedad, updatePropiedad, updateConsulta }) => {
   // States
   const [listaComunas, saveListaComunas] = useState([]);
   const [limites, saveLimites] = useState([]);
   const [printed, updatePrinted] = useState(false);
+  const [locaEspecifica, updatelocaEspecifica] = useState(false);
   // End OF States
 
   //Destructuring
@@ -26,41 +28,58 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
     superficie_util,
     superficie_total,
     dormitorios,
-    banos
+    banos,
+    latitud,
+    longitud
   } = propiedad;
   //END OF Destructuring
 
   //Consulta a API de comunas
   useEffect(() => {
     const consultarAPI = async () => {
-      const url = 'https://real-estate-api-ndtm7xbgda-uc.a.run.app/features_info';
+      const url =
+        "https://real-estate-api-ndtm7xbgda-uc.a.run.app/features_info";
 
       const resultado = await Axios.get(url);
       saveListaComunas(resultado.data.categorical_features[0].allowed_values);
-      saveLimites(resultado.data.numerical_features)
+      saveLimites(resultado.data.numerical_features);
       updatePrinted(true);
     };
 
-    if(!printed){
+    if (!printed) {
       consultarAPI();
     }
   }, [listaComunas, printed]);
 
   //obtener valores del formulario
   const handleChange = (e) => {
-    
-    if(e.target.type === "number"){
+    if (e.target.type === "number") {
       updatePropiedad({
         ...propiedad,
-        [e.target.name]: parseFloat(e.target.value)
+        [e.target.name]: parseFloat(e.target.value),
       });
-    } else{
+    } else {
       updatePropiedad({
         ...propiedad,
-        [e.target.name]: e.target.value
+        [e.target.name]: e.target.value,
       });
     }
   };
+
+  //Mostrar campos de localizacion especifica
+  const handleCheck = (e) => {
+    if(e.target.checked){
+      updatelocaEspecifica(true);
+    } else{
+      updatelocaEspecifica(false);
+    }
+
+    updatePropiedad({
+      ...propiedad,
+      longitud: 0,
+      latitud: 0
+    });
+  }
 
   //Envío de formulario
   const handleSubmit = (e) => {
@@ -147,8 +166,8 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
           value={superficie_util || ""}
           required
           // min={limites[0].min === undefined ? null : limites[0].min}
-          min={printed? limites[0].min : null}
-          max={printed? limites[0].max : null}
+          min={printed ? limites[0].min : null}
+          max={printed ? limites[0].max : null}
         />
       </FormGroup>
 
@@ -169,8 +188,8 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
           onChange={handleChange}
           value={superficie_total || ""}
           required
-          min={printed? limites[1].min : null}
-          max={printed? limites[1].max : null}
+          min={printed ? limites[1].min : null}
+          max={printed ? limites[1].max : null}
         />
       </FormGroup>
 
@@ -191,8 +210,8 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
           onChange={handleChange}
           value={dormitorios || ""}
           required
-          min={printed? limites[2].min : null}
-          max={printed? limites[2].max : null}
+          min={printed ? limites[2].min : null}
+          max={printed ? limites[2].max : null}
         />
       </FormGroup>
 
@@ -209,10 +228,27 @@ const Form = ({propiedad, updatePropiedad, updateConsulta}) => {
           onChange={handleChange}
           value={banos || ""}
           required
-          min={printed? limites[3].min : null}
-          max={printed? limites[3].max : null}
+          min={printed ? limites[3].min : null}
+          max={printed ? limites[3].max : null}
         />
       </FormGroup>
+
+      <div className="divider-container">
+        <div className="divider"></div>
+      </div>
+
+      <div className="section-title check">
+        <input type="checkbox" id="specific" name="specific" value="specific" onChange={handleCheck}/>
+        <label htmlFor="specific"><b>Localización específica</b><sup title="Marcar para epecificar latitud y longitud">🛈</sup></label>
+      </div>
+
+      {locaEspecifica? <LocalizationForm 
+      longitud={longitud}
+      latitud={latitud}
+      printed={printed}
+        handleChange={handleChange}
+        limites={limites}
+      /> : null}
 
       <button type="submit" className="primary-button submit-btn">
         <img

@@ -23,6 +23,8 @@ const Header = ({ updateProduccion }) => {
     superficie_total,
     dormitorios,
     banos,
+    latitud,
+    longitud
   } = propiedad;
   //END OF Destructuring
 
@@ -41,8 +43,8 @@ const Header = ({ updateProduccion }) => {
               "superficie_total": ${superficie_total},
               "dormitorios": ${dormitorios},
               "banos": ${banos},
-              "latitud": 0,
-              "longitud": 0
+              "latitud": ${latitud},
+              "longitud": ${longitud}
             }
           }
         `;
