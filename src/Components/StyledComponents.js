@@ -2,6 +2,13 @@ import styled from "@emotion/styled";
 
 import { myBlue, myBody, myInputShadow, cardShadoe } from "./colores";
 
+import icon_ubicacion from "../img/icon-ubicacion.svg";
+import icon_dormitorios from "../img/icon-dormitorios.svg";
+import icon_banos from "../img/icon-banos.svg";
+import icon_ubicacion_white from "../img/icon-ubicacion-white.svg";
+import icon_dormitorios_white from "../img/icon-dormitorios-white.svg";
+import icon_banos_white from "../img/icon-banos-white.svg";
+
 // Styled Components
 export const Formulario = styled.form`
   padding: 50px 0px;
@@ -139,6 +146,11 @@ export const MainTitle = styled.h2`
     font-size: 40px;
     color: #000;
     margin-bottom: 30px;
+
+    &.second{
+      margin-top: 100px;
+      margin-bottom: 0px;
+    }
 `;
 
 export const ResultCard = styled.div`
@@ -192,4 +204,84 @@ export const ResultCard = styled.div`
     }
   }
 `;
+
+export const ItemCard = styled.div`
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 40px;
+  box-shadow: -10px 4px 60px rgba(${cardShadoe}, 0.5);
+  transition: all ease 0.5s;
+
+  p{
+    margin-bottom: 15px;
+  }
+
+  .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    span{
+      margin-bottom: 10px;
+
+      &::before{
+        content:'';
+        display: inline-block;
+        height: 18px;
+        width: 18px;
+        margin-right: 10px;
+      }
+
+      &.dormitorios::before{
+        background-image: url(${icon_dormitorios}) 
+      }
+      &.banos::before{
+        background-image: url(${icon_banos}) 
+      }
+      &.comuna::before{
+        background-image: url(${icon_ubicacion}) 
+      }
+      
+    }
+  }
+
+  @media (min-width: 768px){
+    .info{
+      flex-direction: row;
+      justify-content: space-between;
+
+      span{
+        margin-bottom: 0;
+      }
+    }
+  }
+`;
+
+export const ItemCardLink = styled.a`
+  &:hover, &:focus{
+    text-decoration: none;
+
+    .item-card{
+      background: rgb(${myBlue});
+      box-shadow: -10px 4px 40px rgba(${myBlue}, 0.3);
+      color: #fff;
+      p{
+        color: #fff;
+      }
+
+      .info span{
+        &.dormitorios::before{
+        background-image: url(${icon_dormitorios_white}) 
+      }
+      &.banos::before{
+        background-image: url(${icon_banos_white}) 
+      }
+      &.comuna::before{
+        background-image: url(${icon_ubicacion_white}) 
+      }
+      }
+    }
+  }
+`;
+
 // END OF Styled Components

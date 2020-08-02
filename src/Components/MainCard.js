@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 
 import { MainTitle, ResultCard } from "./StyledComponents";
 
@@ -14,7 +14,8 @@ const MainCard = ({ prediccion, updateMemoria, memoria }) => {
       tipo: prediccion.propiedad.tipo,
       comuna: prediccion.propiedad.comuna,
       dormitorios: prediccion.propiedad.dormitorios,
-      banos: prediccion.propiedad.banos
+      banos: prediccion.propiedad.banos,
+      precio: prediccion.precio.toFixed(2)
     };
     // console.log(saved);
     updateMemoria([

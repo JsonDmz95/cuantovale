@@ -122,3 +122,10 @@ header.side{
     }
   }
 }
+
+
+@media (min-width: 1400px){
+  header.side{
+    min-width: 550px;
+  }
+}

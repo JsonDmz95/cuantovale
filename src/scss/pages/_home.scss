@@ -7,6 +7,7 @@
   .display{
     position: relative;
     padding: 50px 0px 30px;
+    overflow-x: hidden;
   }
 }
 
@@ -37,5 +38,14 @@
   #root .display{
     padding-left: 100px;
       padding-right: 100px;
+  }
+}
+
+.owl-carousel {
+  .owl-stage-outer{
+    overflow: visible !important;
+  }
+  .owl-stage{
+    padding: 30px 0px;
   }
 }

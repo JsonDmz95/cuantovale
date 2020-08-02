@@ -200,6 +200,12 @@ header.side .collapse-btn.collapsed img {
   }
 }
 
+@media (min-width: 1400px) {
+  header.side {
+    min-width: 550px;
+  }
+}
+
 .primary-button {
   background-color: #2155bf;
   color: #fff;
@@ -259,6 +265,7 @@ header.side .collapse-btn.collapsed img {
 #root .display {
   position: relative;
   padding: 50px 0px 30px;
+  overflow-x: hidden;
 }
 
 @media (min-width: 992px) {
@@ -288,5 +295,13 @@ header.side .collapse-btn.collapsed img {
     padding-left: 100px;
     padding-right: 100px;
   }
+}
+
+.owl-carousel .owl-stage-outer {
+  overflow: visible !important;
+}
+
+.owl-carousel .owl-stage {
+  padding: 30px 0px;
 }
 /*# sourceMappingURL=main.css.map */
