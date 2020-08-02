@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/cuantovale/static/css/main.423a4b9f.chunk.css",
+    "main.js": "/cuantovale/static/js/main.df8cb426.chunk.js",
+    "main.js.map": "/cuantovale/static/js/main.df8cb426.chunk.js.map",
+    "runtime-main.js": "/cuantovale/static/js/runtime-main.54d59b60.js",
+    "runtime-main.js.map": "/cuantovale/static/js/runtime-main.54d59b60.js.map",
+    "static/css/2.c3594674.chunk.css": "/cuantovale/static/css/2.c3594674.chunk.css",
+    "static/js/2.f97e48b7.chunk.js": "/cuantovale/static/js/2.f97e48b7.chunk.js",
+    "static/js/2.f97e48b7.chunk.js.map": "/cuantovale/static/js/2.f97e48b7.chunk.js.map",
+    "index.html": "/cuantovale/index.html",
+    "precache-manifest.eb45575e25b01e8b46da3ff1274a1bc6.js": "/cuantovale/precache-manifest.eb45575e25b01e8b46da3ff1274a1bc6.js",
+    "service-worker.js": "/cuantovale/service-worker.js",
+    "static/css/2.c3594674.chunk.css.map": "/cuantovale/static/css/2.c3594674.chunk.css.map",
+    "static/css/main.423a4b9f.chunk.css.map": "/cuantovale/static/css/main.423a4b9f.chunk.css.map",
+    "static/js/2.f97e48b7.chunk.js.LICENSE.txt": "/cuantovale/static/js/2.f97e48b7.chunk.js.LICENSE.txt",
+    "static/media/collapse-angle.svg": "/cuantovale/static/media/collapse-angle.316625fb.svg",
+    "static/media/icon-banos-white.svg": "/cuantovale/static/media/icon-banos-white.ce011ac5.svg",
+    "static/media/icon-banos.svg": "/cuantovale/static/media/icon-banos.997a1ac2.svg",
+    "static/media/icon-dormitorios-white.svg": "/cuantovale/static/media/icon-dormitorios-white.34978a47.svg",
+    "static/media/icon-dormitorios.svg": "/cuantovale/static/media/icon-dormitorios.c01985ef.svg",
+    "static/media/icon-estimar.svg": "/cuantovale/static/media/icon-estimar.ba15c64c.svg",
+    "static/media/icon-info-propiedad.svg": "/cuantovale/static/media/icon-info-propiedad.27e1e44f.svg",
+    "static/media/icon-s-total.svg": "/cuantovale/static/media/icon-s-total.0f6c9f5d.svg",
+    "static/media/icon-s-util.svg": "/cuantovale/static/media/icon-s-util.42b73cd5.svg",
+    "static/media/icon-tipo.svg": "/cuantovale/static/media/icon-tipo.cba4bcb9.svg",
+    "static/media/icon-ubicacion-white.svg": "/cuantovale/static/media/icon-ubicacion-white.81124bb5.svg",
+    "static/media/icon-ubicacion.svg": "/cuantovale/static/media/icon-ubicacion.5aca20f0.svg",
+    "static/media/logo.svg": "/cuantovale/static/media/logo.a6639bd0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.54d59b60.js",
+    "static/css/2.c3594674.chunk.css",
+    "static/js/2.f97e48b7.chunk.js",
+    "static/css/main.423a4b9f.chunk.css",
+    "static/js/main.df8cb426.chunk.js"
+  ]
+}
