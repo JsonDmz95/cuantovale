@@ -32,7 +32,7 @@ const Header = ({ updateProduccion }) => {
     const readAPI = async () => {
       if (consulta) {
         const apiBase =
-          "https://real-estate-api-ndtm7xbgda-uc.a.run.app/predict";
+          "https://cors-anywhere.herokuapp.com/https://real-estate-api-ndtm7xbgda-uc.a.run.app/predict";
 
         const jsoned = `
           {
@@ -49,18 +49,14 @@ const Header = ({ updateProduccion }) => {
           }
         `;
 
-        const api = await axios.create({
-          baseURL: "https://real-estate-api-ndtm7xbgda-uc.a.run.app/predict/",
-          crossDomain: true,
-          responseType: "json",
+        const axiosConfig = {
           headers: {
-            accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-          },
-        });
+            accept: 'application/json',
+          'Content-Type': 'application/json'
+          }
+        }
 
-        const respuesta = await api.post(apiBase, JSON.parse(jsoned));
+        const respuesta = await axios.post(apiBase, JSON.parse(jsoned), axiosConfig);
         updateProduccion(respuesta.data);
         updateConsulta(false);
       }

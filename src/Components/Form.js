@@ -38,9 +38,11 @@ const Form = ({ propiedad, updatePropiedad, updateConsulta }) => {
   useEffect(() => {
     const consultarAPI = async () => {
       const url =
-        "https://real-estate-api-ndtm7xbgda-uc.a.run.app/features_info";
+        "https://cors-anywhere.herokuapp.com/https://real-estate-api-ndtm7xbgda-uc.a.run.app/features_info";
 
       const resultado = await Axios.get(url);
+      // console.log(resultado);
+
       saveListaComunas(resultado.data.categorical_features[0].allowed_values);
       saveLimites(resultado.data.numerical_features);
       updatePrinted(true);
