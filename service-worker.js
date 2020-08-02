@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/cuantovale/precache-manifest.65536331a31963e0654a2528e1cf992d.js"
+  "/cuantovale/precache-manifest.f605340d7130d281379d8bee5245eac8.js"
 );
 
 self.addEventListener('message', (event) => {
