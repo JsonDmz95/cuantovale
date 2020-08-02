@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d41c84e0774e6da41caecec4333ee891",
+    "revision": "5d05f412ca8efbba8184906f94803ccb",
     "url": "/cuantovale/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cuantovale/static/css/2.c3594674.chunk.css"
   },
   {
-    "revision": "cb2653a7f74b3427286c",
+    "revision": "170ac8d769b65bb15953",
     "url": "/cuantovale/static/css/main.423a4b9f.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cuantovale/static/js/2.f97e48b7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "cb2653a7f74b3427286c",
-    "url": "/cuantovale/static/js/main.df8cb426.chunk.js"
+    "revision": "170ac8d769b65bb15953",
+    "url": "/cuantovale/static/js/main.72e537e5.chunk.js"
   },
   {
     "revision": "0c1abda3294acff82033",
