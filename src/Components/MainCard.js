@@ -1,16 +1,28 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 import { MainTitle, ResultCard } from "./StyledComponents";
 
-const MainCard = ({ prediccion }) => {
-  // Destructuring
-  // const [precio, propiedad] = prediccion;
-  // END OF Destructuring
+const MainCard = ({ prediccion, updateMemoria, memoria }) => {
 
   let today = new Date();
   let fecha = `${today.getDate()}-${
     today.getMonth() + 1
   }-${today.getFullYear()}`;
+
+  const handleClick = () => {
+    let registro = {
+      tipo: prediccion.propiedad.tipo,
+      comuna: prediccion.propiedad.comuna,
+      dormitorios: prediccion.propiedad.dormitorios,
+      banos: prediccion.propiedad.banos
+    };
+    // console.log(saved);
+    updateMemoria([
+      ...memoria,
+      registro
+    ]);
+  }
+
   return (
     <Fragment>
       <MainTitle>Resumen de Estimación</MainTitle>
@@ -92,7 +104,7 @@ const MainCard = ({ prediccion }) => {
             </h4>
 
             <div className="btn-container text-right">
-              <button className="primary-button">Guardar Datos</button>
+              <button className="primary-button" onClick={handleClick}>Guardar Datos</button>
             </div>
           </div>
         </div>

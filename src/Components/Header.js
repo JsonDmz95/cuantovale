@@ -73,6 +73,8 @@ const Header = ({ updateProduccion }) => {
     superficie_total,
     dormitorios,
     banos,
+    latitud,
+    longitud,
     updateProduccion,
   ]);
 
