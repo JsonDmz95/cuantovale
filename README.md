@@ -3,12 +3,12 @@ El demo de este proyecto está disponible en https://jsondmz95.github.io/cuantov
 Este proyecto fue creado con [Create React App](https://github.com/facebook/create-react-app).
 
 INSTRUCCIONES DE USO:<br />
-Seleccionar el tipo de vivienda<br />
-Ingresar los datos requeridos<br />
-ADVERTENCIA: Marcar el campo de localización específica solo si se cuenta con la latitud y longitud de la vivienda, esto aproximara más el estimado de precio de venta<br />
-Presionar el botón de "Estimar Precio de Venta"<br />
-Se mostrarán los datos y precio de la vivienda<br />
-Presionar el botón de "Guardar" para almacenar el registro de la tasación<br />
+- Seleccionar el tipo de vivienda<br />
+- Ingresar los datos requeridos<br />
+- ADVERTENCIA: Marcar el campo de localización específica solo si se cuenta con la latitud y longitud de la vivienda, esto aproximara más el estimado de precio de venta<br />
+- Presionar el botón de "Estimar Precio de Venta"<br />
+- Se mostrarán los datos y precio de la vivienda<br />
+- Presionar el botón de "Guardar" para almacenar el registro de la tasación<br />
 
 ## Available Scripts
 
