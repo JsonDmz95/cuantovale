@@ -25,7 +25,7 @@ En el directorio del proyecto, corre lo siguiente:
 ### `npm start`
 
 Esto correrá la app em modo desarrollador
-Abrettp://localhost:3000](http://localhost:3000) para verla en el navegador.
+Abre [http://localhost:3000](http://localhost:3000) para verla en el navegador.
 
 <br />
 
